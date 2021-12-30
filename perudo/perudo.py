@@ -53,17 +53,18 @@ class Perudo:
         for player in self.players.keys():
             self.players[player] = dice
 
-    def set_player_count(self, count):
-        if len(self.players) > count:
-            excess_players = count - len(self.players)
+    def set_player_count(self, target):
+        if len(self.players) > target:
+            excess_players = len(self.players) - target
             for i in range(excess_players):
-                self.remove_player(random.choice(self.players.keys()))
-        elif len(self.players) < count:
-            shortage_players = len(self.players) - count
+                self.remove_player(random.choice(list(self.players.keys())))
+                
+        elif len(self.players) < target:
+            shortage_players = target - len(self.players)
             for i in range(shortage_players):
                 self.add_player()
         else:
-            self.log(f"Player count is already {count}!")
+            self.log(f"Player count is already {target}!")
 
 
 

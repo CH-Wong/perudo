@@ -1,3 +1,6 @@
+# Output
+
+
 # Ignore Virtual Environment files for Pycharm Editor and vscode
 venv/
 .idea/
