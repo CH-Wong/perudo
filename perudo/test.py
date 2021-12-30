@@ -1,5 +1,6 @@
-a = {1: 5}
+a = None
+b = []
 
-[(b, c)] = a.items()
-
-print(a, b, c)
+if a == None:
+    if a in b:
+        print(hello)

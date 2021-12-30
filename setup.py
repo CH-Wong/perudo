@@ -9,10 +9,10 @@ with open('README.md') as readme_file:
     readme = readme_file.read()
 
 setup(
-    name='plottyboi',
-    url='https://github.com/DelftCircuits/plottyboi',
-    version='3.0.0',
-    description="Data import, export and analysis software for Delft Circuits B.V.",
+    name='perudo',
+    url='https://github.com/CH-Wong/perudo',
+    version='0.0.1',
+    description="Perudo game simulator",
     long_description=readme,
     author="Chun Heung Wong",
     author_email='w.chunheung@gmail.com',
@@ -22,7 +22,7 @@ setup(
     ],
     entry_points={
         'console_scripts': [
-            'p=perudo.Perudo:main',
+            'perudo=perudo.Perudo:main',
         ],
     },
 )
