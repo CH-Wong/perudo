@@ -2,25 +2,26 @@ import matplotlib.pyplot as plt
 import numpy as np
 
 from perudo import perudo
+import os
 
 plt.style.use('ggplot')
 
+root = os.path.dirname(__file__)
+player_counts = range(2,7)
+p = perudo.Perudo()
 
 
 def bid_probability():
-    player_counts = range(2,7)
-
     plt.figure()
     plt.title("Probability of correctly bidding")
     plt.xlabel("k [# occurences]")
     plt.ylabel("Probability [%]")
-    p = perudo.Perudo()
+    
 
     for count in player_counts:
         print(count)
         p.set_player_count(count)
         print(p.players, len(p.players))
-
 
         probabilities_two_to_six = []
         probability_ace_palifico = []
@@ -36,16 +37,16 @@ def bid_probability():
         plt.plot(probability_ace_palifico, label=f"(palifico/aces)", linestyle=":", color=line.get_color())
 
     plt.legend()
+    
+
+    plt.savefig(root + r"\output\id_probability.png")
 
 
 def normalized_bid_probability():
-    player_counts = range(2,7)
-
     plt.figure()
     plt.title("Normalized probability of correctly bidding")
     plt.xlabel("#occurences/#dice []")
     plt.ylabel("Probability []")
-    p = perudo.Perudo()
 
     for count in player_counts:
         p.set_player_count(count)
@@ -64,17 +65,13 @@ def normalized_bid_probability():
 
     plt.legend()
 
+    plt.savefig(root + r"\output\bid_probability_normalized.png")
 
 def calza_probability():
-    print('CALZA-----------\n\n')
-    player_counts = range(2,7)
-
     plt.figure()
     plt.title("Probability for a correct 'calza'")
     plt.xlabel("k [# occurences]")
     plt.ylabel("Probability [%]")
-    p = perudo.Perudo()
-
     for count in player_counts:
         p.set_player_count(count)
         probabilities_two_to_six = []
@@ -91,6 +88,7 @@ def calza_probability():
         plt.plot(probability_ace_palifico, label=f"(palifico/aces)", linestyle=":", color=line.get_color())
 
     plt.legend()
+    plt.savefig(root + r"\output\calza_probability.png")
 
 
 

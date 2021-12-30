@@ -66,9 +66,6 @@ class Perudo:
         else:
             self.log(f"Player count is already {target}!")
 
-
-
-
     def remove_dice(self, name):
         # After every round, a dice is removed or gained. 
         # When removing a dice, set the palifico setting to False. 
@@ -158,6 +155,14 @@ class Perudo:
         # Split the guess in the number and the occurences <k>
         [(number, k)] = guess.items()
 
+        if name != None:
+            n -= self.players[name]
+            k -= self.rolled_dice[name]
+            if k < 0:
+                k = 0
+        
+        
+
         # Calculate the probability for the dice throw.
         # Given that most realistic dice-throws will have low occurences (i.e. low risk), we will calculate the inverse probability instead.
         # Subsequently, we will subtract the reverse probability from 100%
@@ -192,10 +197,7 @@ def main():
     p = Perudo(n_players=9)
     p.roll_dice()
     count = p.count_occurences()
-    print(count)
-
-    print(p.calculate_bid_probability({2:44}))
-    print(p.calculate_bid_probability({1:20}))
     
+
 if __name__ == '__main__':
     main()
